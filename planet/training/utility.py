@@ -157,26 +157,28 @@ def train(model_fn, datasets, logdir, config):
   trainer = trainer_.Trainer(logdir, config=config)
   with tf.variable_scope('graph', use_resource=True):
     data = get_batch(datasets, trainer.phase, trainer.reset)
-    score, summary = model_fn(data, trainer, config)
+    print("train@utility.py: data: ", data["position"])
+    score, summary, prediction, truth = model_fn(data, trainer, config)
     message = 'Graph contains {} trainable variables.'
     tf.logging.info(message.format(tools.count_weights()))
     if config.train_steps:
       trainer.add_phase(
-          'train', config.train_steps, score, summary,
+          'train', config.train_steps, score, summary, prediction, truth,
           batch_size=config.batch_shape[0],
           report_every=None,
           log_every=config.train_log_every,
           checkpoint_every=config.train_checkpoint_every)
     if config.test_steps:
       trainer.add_phase(
-          'test', config.test_steps, score, summary,
+          'test', config.test_steps, score, summary, prediction, truth,
           batch_size=config.batch_shape[0],
           report_every=config.test_steps,
           log_every=config.test_steps,
           checkpoint_every=config.test_checkpoint_every)
   for saver in config.savers:
     trainer.add_saver(**saver)
-  for score in trainer.iterate(config.max_steps):
+  print("2")
+  for score in trainer.iterate(max_step=config.max_steps, prediction=prediction, truth=truth, config=config):
     yield score
 
 

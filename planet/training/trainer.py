@@ -19,6 +19,8 @@ from __future__ import print_function
 import collections
 import os
 import re
+import numpy as np
+import datetime
 
 import tensorflow as tf
 
@@ -57,6 +59,7 @@ class Trainer(object):
     self._log = tf.placeholder(tf.bool, name='log')
     self._report = tf.placeholder(tf.bool, name='report')
     self._reset = tf.placeholder(tf.bool, name='reset')
+    self._prediction = tf.placeholder(tf.float32, name='prediction')
     self._phases = []
     # Checkpointing.
     self._loaders = []
@@ -117,7 +120,7 @@ class Trainer(object):
       self._checkpoints.append(checkpoint)
 
   def add_phase(
-      self, name, steps, score, summary, batch_size=1,
+      self, name, steps, score, summary, prediction, truth, batch_size=1,
       report_every=None, log_every=None, checkpoint_every=None,
       restore_every=None, feed=None):
     """Add a phase to the trainer protocol.
@@ -145,7 +148,7 @@ class Trainer(object):
     writer = self._logdir and tf.summary.FileWriter(
         os.path.join(self._logdir, name + (self._config.task_suffix or '')),
         tf.get_default_graph(), flush_secs=30)
-    op = self._define_step(name, batch_size, score, summary)
+    op = self._define_step(name, batch_size, score, summary, prediction, truth)
     self._phases.append(_Phase(
         name, writer, op, batch_size, int(steps), feed, report_every,
         log_every, checkpoint_every, restore_every))
@@ -160,7 +163,7 @@ class Trainer(object):
     for _ in self.iterate(max_step, sess):
       pass
 
-  def iterate(self, max_step=None, sess=None):
+  def iterate(self, prediction, truth, config, max_step=None, sess=None):
     """Run the schedule for a specified number of steps and yield scores.
 
     Call the operation of the current phase until the global step reaches the
@@ -174,11 +177,14 @@ class Trainer(object):
     Yields:
       Reported mean scores.
     """
+    # pred = tf.Variable(initial_value=np.zeros(shape=(8,)), trainable=True, dtype=tf.float32)
     sess = sess or self._create_session()
+    # graph = tools.AttrDict(locals())
+    # _prediction = []
     with sess:
       self._initialize_variables(
           sess, self._loaders, self._logdirs, self._checkpoints)
-      sess.graph.finalize()
+      counter = 1
       while True:
         global_step = sess.run(self._global_step)
         if max_step and global_step >= max_step:
@@ -186,10 +192,38 @@ class Trainer(object):
         phase, epoch, steps_in = self._find_current_phase(global_step)
         phase_step = epoch * phase.steps + steps_in
         if steps_in % phase.steps < phase.batch_size:
+          # result = sess.run(prediction)
           message = '\n' + ('-' * 50) + '\n'
           message += 'Epoch {} phase {} (phase step {}, global step {}).'
           tf.logging.info(message.format(
               epoch + 1, phase.name, phase_step, global_step))
+
+          # heads =  graph.heads.copy()
+          # with tf.variable_scope('openloop'):
+          #   state = tools.unroll.open_loop(
+          #     graph.cell, graph.embedded, graph.prev_action,
+          #     config.open_loop_context, config.debug)
+          #   state_features = graph.cell.features_from_state(state)
+          #   state_dists = {name: head(state_features) for name, head in heads.items()}
+          #   with tf.control_dependencies(_prediction):
+          #     with tf.variable_scope('state'):
+          #       # Predictions.
+          #       log_probs = {}
+          #       # print("Dists: ", dists.items())
+          #       for key, dist in state_dists.items():
+          #         if key in ('image',):
+          #           continue
+          #         # We only look at the first example in the batch.
+          #         log_prob = dist.log_prob(graph.obs[key])[0]
+          #         pred_result = dist.mode()[0]
+          #         truth_result = graph.obs[key][0]
+          #   _prediction.append(pred_result)
+          # print("pred: ", pred)
+          # # print("prediction: ", type(prediction))
+          # pred.assign(prediction)
+          # result = sess.run(pred)
+          # print("Result: ", result)
+        # print("Prediction: ", sess.run(feed_dict={_prediction : prediction}))
         # Populate book keeping tensors.
         phase.feed[self._step] = phase_step
         phase.feed[self._phase] = phase.name
@@ -198,7 +232,28 @@ class Trainer(object):
             phase_step, phase.batch_size, phase.log_every)
         phase.feed[self._report] = self._is_every_steps(
             phase_step, phase.batch_size, phase.report_every)
-        summary, mean_score, global_step = sess.run(phase.op, phase.feed)
+        summary, mean_score, global_step, prediction, truth_pos, \
+          truth_vel, truth_rew, truth_act, truth_img = sess.run(phase.op, phase.feed)
+        # print("[iterate@trainer.py] prediction: ", prediction)
+        # print("[iterate@trainer.py] truth_pos: ", truth_pos)
+        # print("[iterate@trainer.py] truth_vel: ", truth_vel)
+        outdir= "/home/pulver/Desktop/planet_data/"
+        if not os.path.exists(outdir):
+          os.makedirs(outdir)
+        print("Counter: ", counter)
+        np.save(file=outdir + "pred_vel-" + str(counter), arr=prediction[:, 0:9])
+        np.save(file=outdir + "pred_pos-" + str(counter), arr=prediction[:, 9:-1])
+        np.save(file=outdir + "pred_rew-" + str(counter), arr=prediction[:, -1])
+        np.save(file=outdir + "truth_pos-" + str(counter), arr=truth_pos)
+        np.save(file=outdir + "truth_vel-" + str(counter), arr=truth_vel)
+        np.save(file=outdir + "truth_act-" + str(counter), arr=truth_act)
+        np.save(file=outdir + "truth_rew-" + str(counter), arr=truth_rew)
+        np.save(file=outdir + "truth_img-" + str(counter), arr=truth_img)
+
+        counter = counter + 1
+        # self._prediction = sess.run(prediction[0])
+        # _prediction = tf.placeholder(dtype=tf.float32, shape=(50, 8), name='prediction')
+
         if self._is_every_steps(
             phase_step, phase.batch_size, phase.checkpoint_every):
           for saver in self._savers:
@@ -253,7 +308,7 @@ class Trainer(object):
         return phase, epoch, steps_in
       steps_in -= phase.steps
 
-  def _define_step(self, name, batch_size, score, summary):
+  def _define_step(self, name, batch_size, score, summary, prediction, truth):
     """Combine operations of a phase.
 
     Keeps track of the mean score and when to report it.
@@ -268,6 +323,8 @@ class Trainer(object):
       Tuple of summary tensor, mean score, and new global step. The mean score
       is zero for non reporting steps.
     """
+    print("_define_step@trainer.py] prediction: ", prediction)
+    print("_define_step@trainer.py] truth: ", truth)
     with tf.variable_scope('phase_{}'.format(name)):
       score_mean = tools.StreamingMean((), tf.float32, 'score_mean')
       score.set_shape((None,))
@@ -281,11 +338,19 @@ class Trainer(object):
                 name + '/score', mean_score, family='trainer')]),
             lambda: summary)
         next_step = self._global_step.assign_add(batch_size)
-      with tf.control_dependencies([summary, mean_score, next_step]):
+      with tf.control_dependencies([summary, mean_score, next_step, prediction,
+                                    truth['position'], truth['velocity'], truth['reward'],
+                                    truth['action'], truth['image']]):
         return (
             tf.identity(summary),
             tf.identity(mean_score),
-            tf.identity(next_step))
+            tf.identity(next_step),
+            tf.identity(prediction),
+            tf.identity(truth['position']),
+            tf.identity(truth['velocity']),
+            tf.identity(truth['reward']),
+            tf.identity(truth['action']),
+            tf.identity(truth['image']))
 
   def _create_session(self):
     """Create a TensorFlow session with sensible default parameters.

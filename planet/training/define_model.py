@@ -19,6 +19,7 @@ from __future__ import print_function
 import functools
 
 import tensorflow as tf
+import numpy as np
 
 from planet import tools
 from planet.training import define_summaries
@@ -137,12 +138,17 @@ def define_model(data, trainer, config):
 
   # Compute summaries.
   graph = tools.AttrDict(locals())
+  print("Position: ", graph.obs["position"])
   with tf.control_dependencies(collect_summaries):
-    summaries, score = tf.cond(
-        should_summarize,
-        lambda: define_summaries.define_summaries(graph, config),
-        lambda: (tf.constant(''), tf.zeros((0,), tf.float32)),
-        name='summaries')
+    summaries, score, prediction, truth = define_summaries.define_summaries(graph, config) #tf.cond(
+
+  print("[define_model@define_model.py] prediction: ", prediction)
+  print("[define_model@define_model.py] truth: ", truth)
+        # should_summarize,
+        # lambda: define_summaries.define_summaries(graph, config),
+        # lambda: (tf.constant(''), tf.zeros((0,), tf.float32), tf.zeros((8,), tf.float32)),
+        # name='summaries')
+  print("1")
   with tf.device('/cpu:0'):
     summaries = tf.summary.merge(
         [summaries, train_summary] + collect_summaries)
@@ -157,4 +163,4 @@ def define_model(data, trainer, config):
     ), step, config.mean_metrics_every))
   with tf.control_dependencies(dependencies):
     score = tf.identity(score)
-  return score, summaries
+  return score, summaries, prediction, truth

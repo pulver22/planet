@@ -439,6 +439,7 @@ class CollectGymDataset(object):
   def step(self, action, *args, **kwargs):
     if kwargs.get('blocking', True):
       transition = self._env.step(action, *args, **kwargs)
+      # print("[step@wrappers.py]transition: ", transition)
       return self._process_step(action, *transition)
     else:
       future = self._env.step(action, *args, **kwargs)

@@ -16,6 +16,12 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import datetime
+import io
+import os
+import uuid
+
+import numpy as np
 from tensorflow_probability import distributions as tfd
 import tensorflow as tf
 
@@ -31,6 +37,7 @@ class MPCAgent(object):
     self._should_log = should_log
     self._config = config
     self._cell = config.cell
+    self._outdir = "/home/pulver/Desktop/latent_space/"
     state = self._cell.zero_state(len(batch_env), tf.float32)
     var_like = lambda x: tf.get_local_variable(
         x.name.split(':')[0].replace('/', '_') + '_var',
@@ -57,6 +64,9 @@ class MPCAgent(object):
   def perform(self, agent_indices, observ):
     observ = self._config.preprocess_fn(observ)
     embedded = self._config.encoder({'image': observ[:, None]})[:, 0]
+    # if self._outdir:
+    #     filename = self._get_filename()
+    #     self._write(embedded, filename)
     state = nested.map(
         lambda tensor: tf.gather(tensor, agent_indices),
         self._state)
@@ -80,10 +90,30 @@ class MPCAgent(object):
         lambda var, val: tf.scatter_update(var, agent_indices, val),
         self._state, state, flatten=True)
     with tf.control_dependencies(remember_state + (remember_action,)):
-      return tf.identity(action), tf.constant('')
+      return tf.identity(action), tf.constant(''), embedded  # return also the latent space
 
   def experience(self, agent_indices, *experience):
     return tf.constant('')
 
   def end_episode(self, agent_indices):
     return tf.constant('')
+
+
+  def _get_filename(self):
+    timestamp = datetime.datetime.now().strftime('%Y%m%dT%H%M%S')
+    identifier = str(uuid.uuid4()).replace('-', '')
+    filename = '{}-{}.npz'.format(timestamp, identifier)
+    filename = os.path.join(self._outdir, filename)
+    return filename
+
+  def _write(self, episode, filename):
+    if not tf.gfile.Exists(self._outdir):
+      tf.gfile.MakeDirs(self._outdir)
+      episode = episode.eval()
+    with io.BytesIO() as file_:
+      np.savez_compressed(file_, episode)
+      file_.seek(0)
+      with tf.gfile.Open(filename, 'w') as ff:
+        ff.write(file_.read())
+    name = os.path.splitext(os.path.basename(filename))[0]
+    print('Recorded latent space {}.'.format(name))

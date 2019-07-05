@@ -35,6 +35,8 @@ def encoder(obs):
   assert hidden.shape[1:].as_list() == [1024], hidden.shape.as_list()
   hidden = tf.reshape(hidden, tools.shape(obs['image'])[:2] + [
       np.prod(hidden.shape[1:].as_list())])
+  print("======")
+  print("Shape latent space", np.shape(hidden))
   return hidden
 
 

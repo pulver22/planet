@@ -18,6 +18,8 @@ from __future__ import print_function
 
 import tensorflow as tf
 from tensorflow_probability import distributions as tfd
+import numpy as np
+import sys
 
 from planet import tools
 from planet.training import utility
@@ -90,11 +92,27 @@ def define_summaries(graph, config):
         state_dists['image'], config.postprocess_fn(graph.obs['image']))
     summaries += summary.state_summaries(graph.cell, state, posterior, mask)
     with tf.control_dependencies(plot_summaries):
-      plot_summary = summary.prediction_summaries(
+      plot_summary, prediction = summary.prediction_summaries(
           state_dists, graph.obs, state)
       plot_summaries += plot_summary
       summaries += plot_summary
 
+
+      # sess = tf.Session()
+      # result = sess.run(prediction[0].eval)
+      # phase, epoch, steps_in = self._find_current_phase(global_step)
+      # with sess.as_default():
+      #   resutl = sess.run(phase.op, phase.feeds)
+      # print("Dists: ", state.items())
+      # print("prediction: ", type(prediction), len(prediction))
+      # print("Truth: ", type(truth), len(truth))
+      # truth_arr = np.asarray(truth)
+      # prediction_arr = np.asarray(prediction)
+      # print("prediction_arr: ", type(prediction_arr), prediction_arr)
+      # print("truth_arr: ", type(truth_arr), truth_arr)
+      # np.save(file='/home/pulver/Desktop/tmp_planet/supervised_data/prediction', arr=prediction_arr)
+      # np.save(file='/home/pulver/Desktop/tmp_planet/supervised_data/truth', arr=truth_arr)
+  print("Pred: ", prediction)
   with tf.variable_scope('simulation'):
     sim_returns = []
     for name, params in config.sim_summaries.items():
@@ -110,4 +128,4 @@ def define_summaries(graph, config):
 
   summaries = tf.summary.merge(summaries)
   score = tf.reduce_mean(sim_returns)[None]
-  return summaries, score
+  return summaries, score, prediction, graph.obs

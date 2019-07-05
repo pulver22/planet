@@ -122,6 +122,7 @@ def main(args):
 
 if __name__ == '__main__':
   boolean = lambda x: ['False', 'True'].index(x)
+  boolean = lambda x: ['False', 'True'].index(x)
   parser = argparse.ArgumentParser()
   parser.add_argument(
       '--logdirs', required=True,

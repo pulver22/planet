@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="da51e67a-05f7-40e8-915c-e5c921a61c45" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/planet/control/mpc_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet/control/mpc_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planet/control/simulate.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet/control/simulate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planet/control/wrappers.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet/control/wrappers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planet/networks/conv_ha.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet/networks/conv_ha.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planet/scripts/configs.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet/scripts/configs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planet/scripts/fetch_events.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet/scripts/fetch_events.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planet/scripts/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet/scripts/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planet/tools/summary.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet/tools/summary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planet/training/define_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet/training/define_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planet/training/define_summaries.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet/training/define_summaries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planet/training/trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet/training/trainer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planet/training/utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet/training/utility.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <splitter split-orientation="horizontal" split-proportion="0.14637072">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/planet/training/utility.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="450">
+                  <caret line="164" column="19" selection-start-line="164" selection-start-column="19" selection-end-line="164" selection-end-column="19" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/planet/scripts/train.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="553">
+                  <caret line="77" column="35" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
+                  <folding>
+                    <element signature="e#1119#1157#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/planet/training/define_model.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="510">
+                  <caret line="30" column="19" lean-forward="true" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+                  <folding>
+                    <element signature="e#606#644#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <splitter split-orientation="horizontal" split-proportion="0.7280393">
+          <split-first>
+            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/planet/scripts/configs.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="3283">
+                      <caret line="198" column="4" selection-start-line="198" selection-start-column="4" selection-end-line="198" selection-end-column="4" />
+                      <folding>
+                        <element signature="e#606#644#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/planet/training/define_summaries.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="632">
+                      <caret line="114" column="28" selection-start-line="114" selection-start-column="18" selection-end-line="114" selection-end-column="28" />
+                      <folding>
+                        <element signature="e#606#644#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/planet/control/wrappers.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="282">
+                      <caret line="441" column="58" selection-start-line="441" selection-start-column="58" selection-end-line="441" selection-end-column="58" />
+                      <folding>
+                        <element signature="e#634#672#0" expanded="true" />
+                        <element signature="e#2788#3502#0" />
+                        <element signature="e#3541#5246#0" />
+                        <element signature="e#5287#5843#0" />
+                        <element signature="e#5880#6180#0" />
+                        <element signature="e#6213#6701#0" />
+                        <element signature="e#6739#7499#0" />
+                        <element signature="e#9008#9549#0" />
+                        <element signature="e#9586#10024#0" />
+                        <element signature="e#10790#11783#0" />
+                        <element signature="e#14608#15603#0" />
+                        <element signature="e#15629#21145#0" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/planet/training/running.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="17">
+                      <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
+                      <folding>
+                        <element signature="e#3537#4680#0" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/planet/training/test_running.py">
+                  <provider selected="true" editor-type-id="text-editor" />
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/planet/tools/summary.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="104">
+                      <caret line="180" column="38" selection-start-line="179" selection-start-column="38" selection-end-line="180" selection-end-column="38" />
+                      <folding>
+                        <element signature="e#606#644#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/planet/training/trainer.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="559">
+                      <caret line="245" column="75" selection-start-line="245" selection-start-column="75" selection-end-line="245" selection-end-column="75" />
+                      <folding>
+                        <element signature="e#606#644#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
+          </split-first>
+          <split-second>
+            <leaf>
+              <file pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/planet/tools/summary.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="448">
+                      <caret line="179" column="38" selection-start-line="179" selection-start-column="38" selection-end-line="179" selection-end-column="38" />
+                      <folding>
+                        <element signature="e#606#644#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
+          </split-second>
+        </splitter>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>npz</find>
+      <find>collect_initial_episodes</find>
+      <find>DEFINE_SUMM</find>
+      <find>GRAPH</find>
+      <find>graph.hea</find>
+      <find>plot_summaries</find>
+      <find>graph = to</find>
+      <find>collect_summaries</find>
+      <find>SIM_COL</find>
+      <find>defaul</find>
+      <find>prediction_summ</find>
+      <find>graph = tool</find>
+      <find>define_model</find>
+      <find>trainer</find>
+      <find>npy</find>
+      <find>assert</find>
+      <find>np.save</find>
+      <find>_write</find>
+      <find>_process_step</find>
+      <find>phase.</find>
+      <find>summary</find>
+      <find>_define_step</find>
+      <find>add_p</find>
+      <find>define</find>
+      <find>iterate</find>
+      <find>Position</find>
+      <find>train</find>
+      <find>define)s</find>
+      <find>model_fn</find>
+      <find>add_phase</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/planet/control/in_graph_batch_env.py" />
+        <option value="$PROJECT_DIR$/planet/control/simulate.py" />
+        <option value="$PROJECT_DIR$/planet/control/mpc_agent.py" />
+        <option value="$PROJECT_DIR$/planet/networks/conv_ha.py" />
+        <option value="$PROJECT_DIR$/planet/scripts/configs.py" />
+        <option value="$PROJECT_DIR$/planet/scripts/train.py" />
+        <option value="$PROJECT_DIR$/planet/scripts/fetch_events.py" />
+        <option value="$PROJECT_DIR$/planet/control/wrappers.py" />
+        <option value="$PROJECT_DIR$/planet/training/utility.py" />
+        <option value="$PROJECT_DIR$/planet/training/define_summaries.py" />
+        <option value="$PROJECT_DIR$/planet/tools/summary.py" />
+        <option value="$PROJECT_DIR$/planet/training/define_model.py" />
+        <option value="$PROJECT_DIR$/planet/training/trainer.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+        <option value="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1756" />
+    <option name="width" value="1440" />
+    <option name="height" value="756" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="planet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="planet" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="planet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="planet" type="462c0819:PsiDirectoryNode" />
+              <item name="planet" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="planet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="planet" type="462c0819:PsiDirectoryNode" />
+              <item name="planet" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="planet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="planet" type="462c0819:PsiDirectoryNode" />
+              <item name="planet" type="462c0819:PsiDirectoryNode" />
+              <item name="training" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="planet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="planet" type="462c0819:PsiDirectoryNode" />
+              <item name="planetrl.egg-info" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/planet/scripts/train.py" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="train" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="planet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python3.5" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/planet/scripts" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/planet/scripts/train.py" />
+      <option name="PARAMETERS" value="--logdir $PROJECT_DIR$/../Desktop/tmp_planet/run-3/00001/ --config default --params '{tasks: [cheetah_run]}'" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="da51e67a-05f7-40e8-915c-e5c921a61c45" name="Default Changelist" comment="" />
+      <created>1559926103524</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1559926103524</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1920" y="27" width="1920" height="1009" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.12078059" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.28228572" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32914287" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32914287" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/planet/models/ssm.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/control/in_graph_batch_env.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/control/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/control/batch_env.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="91" column="53" selection-start-line="91" selection-start-column="42" selection-end-line="91" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.5/dist-packages/ruamel/yaml/scanner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="1478" selection-start-line="1478" selection-end-line="1478" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.5/tokenize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="453" selection-start-line="453" selection-end-line="453" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../.local/lib/python3.5/site-packages/tensorflow/python/client/session.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="818" column="6" selection-start-line="818" selection-start-column="6" selection-end-line="818" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/control/mpc_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1034">
+          <caret line="76" column="30" selection-start-line="76" selection-start-column="30" selection-end-line="76" selection-end-column="30" />
+          <folding>
+            <element signature="e#606#644#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/control/planning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="50" column="11" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/control/random_episodes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="21" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="21" />
+          <folding>
+            <element signature="e#606#644#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/image_strip_summary.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/control/simulate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="266" column="45" selection-start-line="266" selection-start-column="34" selection-end-line="266" selection-end-column="45" />
+          <folding>
+            <element signature="e#683#721#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/models/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-235" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/models/rssm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1391" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/networks/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#606#644#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/networks/basic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/networks/conv_ha.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/scripts/test_planet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
+          <folding>
+            <element signature="e#606#644#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/chunk_sequence.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-541" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/count_dataset.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/count_weights.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/custom_optimizer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-184" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/gif_summary.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1799" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/mask.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/mse_distribution.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/nested.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2513" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/shape.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/test_nested.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/test_overshooting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/unroll.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/schedule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-133" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/reshape_as.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/preprocess.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../.PyCharmCE2019.1/system/python_stubs/-1247971764/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="287" column="4" selection-start-line="287" selection-start-column="4" selection-end-line="287" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/training/test_running.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="375">
+            <caret line="91" column="33" selection-start-line="91" selection-start-column="33" selection-end-line="91" selection-end-column="33" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/scripts/configs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3283">
+          <caret line="198" column="4" selection-start-line="198" selection-start-column="4" selection-end-line="198" selection-end-column="4" />
+          <folding>
+            <element signature="e#606#644#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/functools.pyi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/scripts/fetch_events.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="65" lean-forward="true" selection-start-line="58" selection-start-column="1" selection-end-line="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/control/wrappers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="441" column="58" selection-start-line="441" selection-start-column="58" selection-end-line="441" selection-end-column="58" />
+          <folding>
+            <element signature="e#634#672#0" expanded="true" />
+            <element signature="e#2788#3502#0" />
+            <element signature="e#3541#5246#0" />
+            <element signature="e#5287#5843#0" />
+            <element signature="e#5880#6180#0" />
+            <element signature="e#6213#6701#0" />
+            <element signature="e#6739#7499#0" />
+            <element signature="e#9008#9549#0" />
+            <element signature="e#9586#10024#0" />
+            <element signature="e#10790#11783#0" />
+            <element signature="e#14608#15603#0" />
+            <element signature="e#15629#21145#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../.local/lib/python3.5/site-packages/tensorflow/python/framework/ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="4999" column="4" selection-start-line="4999" selection-start-column="4" selection-end-line="4999" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/numpy_episodes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="166" column="19" lean-forward="true" selection-start-line="166" selection-start-column="19" selection-end-line="166" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/training/running.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
+          <folding>
+            <element signature="e#3537#4680#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/summary.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="180" column="38" selection-start-line="179" selection-start-column="38" selection-end-line="180" selection-end-column="38" />
+          <folding>
+            <element signature="e#606#644#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/tools/attr_dict.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/training/define_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="19" lean-forward="true" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+          <folding>
+            <element signature="e#606#644#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/training/utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="164" column="19" selection-start-line="164" selection-start-column="19" selection-end-line="164" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/training/define_summaries.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="632">
+          <caret line="114" column="28" selection-start-line="114" selection-start-column="18" selection-end-line="114" selection-end-column="28" />
+          <folding>
+            <element signature="e#606#644#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/scripts/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="553">
+          <caret line="77" column="35" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
+          <folding>
+            <element signature="e#1119#1157#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planet/training/trainer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="245" column="75" selection-start-line="245" selection-start-column="75" selection-end-line="245" selection-end-column="75" />
+          <folding>
+            <element signature="e#606#644#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

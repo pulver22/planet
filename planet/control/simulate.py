@@ -22,12 +22,22 @@ import functools
 
 import tensorflow as tf
 
+import numpy as np
+import pickle
+import csv
+
 from planet import tools
 from planet.control import batch_env
 from planet.control import in_graph_batch_env
 from planet.control import mpc_agent
 from planet.control import wrappers
 from planet.tools import streaming_mean
+
+
+reward_list = list()
+image_list = list()
+action_list = list()
+score_list = list()
 
 
 def simulate(
@@ -85,6 +95,26 @@ def collect_rollouts(
   image = tf.transpose(image, [1, 0, 2, 3, 4])
   action = tf.transpose(action, [1, 0, 2])
   reward = tf.transpose(reward)
+
+  # # Save the current score, image, action and reward in the datastructure for data collection.
+  # global score_list
+  # score_list.append(score)
+  # global image_list
+  # image_list.append(image)
+  # global action_list
+  # action_list.append(action)
+  # global reward_list
+  # reward_list.append(reward)
+  # print("===========")
+  # print("Reward shape: ", reward)
+  # print("Reward: ", reward)
+  # print("Reward[1]: ", reward[1])
+  # # with open('reward_list', 'wb') as fp:
+  # #     pickle.dump(reward_list, fp)
+  # with open("/home/pulver/Desktop/reward_list.csv", "wb") as f:
+  #     writer = csv.writer(f)
+  #     writer.writerows(reward)
+
   return score, image, action, reward
 
 
@@ -156,7 +186,7 @@ def simulate_step(batch_env, algo, log=True, reset=False):
     """
     prevob = batch_env.observ + 0  # Ensure a copy of the variable value.
     agent_indices = tf.range(len(batch_env))
-    action, step_summary = algo.perform(agent_indices, prevob)
+    action, step_summary, embedded = algo.perform(agent_indices, prevob)  # Get also the latent space
     action.set_shape(batch_env.action.shape)
     with tf.control_dependencies([batch_env.step(action)]):
       add_score = score_var.assign_add(batch_env.reward)
@@ -168,7 +198,8 @@ def simulate_step(batch_env, algo, log=True, reset=False):
           batch_env.action,
           batch_env.reward,
           batch_env.done,
-          batch_env.observ)
+          batch_env.observ,
+          embedded)  # Add the latent space
       summary = tf.summary.merge([step_summary, experience_summary])
     return summary, add_score, inc_length
 
