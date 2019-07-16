@@ -237,19 +237,22 @@ class Trainer(object):
         # print("[iterate@trainer.py] prediction: ", prediction)
         # print("[iterate@trainer.py] truth_pos: ", truth_pos)
         # print("[iterate@trainer.py] truth_vel: ", truth_vel)
-        outdir= "/home/pulver/Desktop/planet_data/"
-        if not os.path.exists(outdir):
-          os.makedirs(outdir)
-        print("Counter: ", counter)
-        np.save(file=outdir + "pred_vel-" + str(counter), arr=prediction[:, 0:9])
-        np.save(file=outdir + "pred_pos-" + str(counter), arr=prediction[:, 9:-1])
-        np.save(file=outdir + "pred_rew-" + str(counter), arr=prediction[:, -1])
-        np.save(file=outdir + "truth_pos-" + str(counter), arr=truth_pos)
-        np.save(file=outdir + "truth_vel-" + str(counter), arr=truth_vel)
-        np.save(file=outdir + "truth_act-" + str(counter), arr=truth_act)
-        np.save(file=outdir + "truth_rew-" + str(counter), arr=truth_rew)
-        np.save(file=outdir + "truth_img-" + str(counter), arr=truth_img)
-
+        outdir_source = "/media/pulver/PulverHDD/planet_data/"
+        dirs_list = ["pred_vel/", "pred_pos/", "pred_rew/", "truth_pos/", "truth_vel/", "truth_act/", "truth_rew/",
+                     "truth_img/"]
+        for i in dirs_list:
+          if not os.path.exists(outdir_source + i):
+            os.makedirs(outdir_source)
+        # print("Counter: ", counter)
+        if counter % 10 == 0:
+          np.save(file=outdir_source + dirs_list[0] + str(counter), arr=prediction[:, 0:9])  # pred_vel
+          np.save(file=outdir_source + dirs_list[1] + str(counter), arr=prediction[:, 9:-1])  # pred_pos
+          np.save(file=outdir_source + dirs_list[2] + str(counter), arr=prediction[:, -1])  # pred_rew
+          np.save(file=outdir_source + dirs_list[3] + str(counter), arr=truth_pos)  # truth_pos
+          np.save(file=outdir_source + dirs_list[4] + str(counter), arr=truth_vel)  # truth_vel
+          np.save(file=outdir_source + dirs_list[5] + str(counter), arr=truth_act)  # truth_act
+          np.save(file=outdir_source + dirs_list[6] + str(counter), arr=truth_rew)  # truth_rew
+          np.save(file=outdir_source + dirs_list[7] + str(counter), arr=truth_img)  # truth_img
         counter = counter + 1
         # self._prediction = sess.run(prediction[0])
         # _prediction = tf.placeholder(dtype=tf.float32, shape=(50, 8), name='prediction')
