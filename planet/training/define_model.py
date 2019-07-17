@@ -86,11 +86,11 @@ def define_model(data, trainer, config):
         # lambda: (tf.constant(''), tf.zeros((0,), tf.float32), tf.zeros((8,), tf.float32)),
         # name='summaries')
   summaries = tf.summary.merge([summaries, summary])
-  dependencies.append(utility.print_metrics((
-      {ob.name: ob.value for ob in objectives},
-      step, config.print_metrics_every, 'objectives'))
+  dependencies.append(utility.print_metrics(
+    {ob.name: ob.value for ob in objectives},
+    step, config.print_metrics_every, 'objectives'))
   dependencies.append(utility.print_metrics(
       grad_norms, step, config.print_metrics_every, 'grad_norms'))
   with tf.control_dependencies(dependencies):
     score = tf.identity(score)
-  return score, summaries, cleanups
+  return score, summaries, cleanups, prediction, truth

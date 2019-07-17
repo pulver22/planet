@@ -92,7 +92,7 @@ def define_summaries(graph, config, cleanups):
         state_dists['image'], config.postprocess_fn(graph.data['image']))
     summaries += summary.state_summaries(graph.cell, state, posterior, mask)
     with tf.control_dependencies(plot_summaries):
-      plot_summary = summary.prediction_summaries(
+      plot_summary, prediction = summary.prediction_summaries(
           state_dists, graph.data, state)
       plot_summaries += plot_summary
       summaries += plot_summary
@@ -132,4 +132,15 @@ def define_summaries(graph, config, cleanups):
 
   summaries = tf.summary.merge(summaries)
   score = tf.reduce_mean(sim_returns)[None]
-  return summaries, score, prediction, graph.obs
+  # print("==> Graph.data: ", graph.data)
+  print("==> state_dists['image']: ", state_dists['image'].mode()[0])
+  graph_slim = {}
+  graph_slim['action'] =graph.data['action'][0]
+  graph_slim['image'] = graph.data['image'][0]
+  graph_slim['position'] = graph.data['position'][0]
+  graph_slim['velocity'] = graph.data['velocity'][0]
+  graph_slim['return'] = graph.data['return'][0]
+  graph_slim['reward'] = graph.data['reward'][0]
+  graph_slim['predicted_image'] = state_dists['image'].mode()[0]
+
+  return summaries, score, prediction, graph_slim
