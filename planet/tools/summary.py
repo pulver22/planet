@@ -236,6 +236,7 @@ def prediction_summaries(dists, data, state, name='state'):
 
 
     predictions = tf.concat(predictions, axis=-1)  # Convert list of tensor to tensors
+
     log_probs = sorted(log_probs.items(), key=lambda x: x[0])
     titles, lines = zip(*log_probs)
     titles = [title.title() for title in titles]
