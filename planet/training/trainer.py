@@ -252,6 +252,8 @@ class Trainer(object):
           np.save(file=outdir_source + dirs_list[4] + str(counter), arr=truth_vel)  # truth_vel
           np.save(file=outdir_source + dirs_list[5] + str(counter), arr=truth_act)  # truth_act
           np.save(file=outdir_source + dirs_list[6] + str(counter), arr=truth_rew)  # truth_rew
+          # Normalize the truth_image in [0,1] since originally it's in [-0.5, 0.5]
+          truth_img = (truth_img - np.min(truth_img)) / (np.max(truth_img) - np.min(truth_img))
           np.save(file=outdir_source + dirs_list[7] + str(counter), arr=truth_img)  # truth_img
           np.save(file=outdir_source + dirs_list[8] + str(counter), arr=pred_image)  # truth_img
 
@@ -328,8 +330,8 @@ class Trainer(object):
       Tuple of summary tensor, mean score, and new global step. The mean score
       is zero for non reporting steps.
     """
-    print("_define_step@trainer.py] prediction: ", prediction)
-    print("_define_step@trainer.py] truth: ", truth)
+    # print("_define_step@trainer.py] prediction: ", prediction)
+    # print("_define_step@trainer.py] truth: ", truth)
     with tf.variable_scope('phase_{}'.format(name)):
       score_mean = tools.StreamingMean((), tf.float32, 'score_mean')
       score.set_shape((None,))

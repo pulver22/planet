@@ -177,7 +177,7 @@ def prediction_summaries(dists, data, state, name='state'):
       prediction = dist.mode()[0]
       truth = data[key][0]
       plot_name = key
-      print("prediction: ", prediction)
+      # print("prediction: ", prediction)
       # print("Truth: ", type(truth), truth.shape)
       # Save on disk
       # print("tmp: ", tmp)

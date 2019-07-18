@@ -74,7 +74,7 @@ def process(logdir, args):
       max_length=config.max_length,
       max_episodes=config.max_episodes,
       action_noise=config.fixed_action_noise)
-  print("[process@train.py] dataset: ", dataset['train'])
+  # print("[process@train.py] dataset: ", dataset['train'])
   for score in training.utility.train(
       training.define_model, dataset, logdir, config):
     yield score

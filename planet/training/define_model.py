@@ -138,18 +138,18 @@ def define_model(data, trainer, config):
 
   # Compute summaries.
   graph = tools.AttrDict(locals())
-  print("Position: ", graph.obs["position"])
+  # print("Position: ", graph.obs["position"])
   with tf.control_dependencies(collect_summaries):
     summaries, score, prediction, truth = define_summaries.define_summaries(graph, config) #tf.cond(
 
-  print("[define_model@define_model.py] prediction: ", prediction)
-  print("[define_model@define_model.py] truth: ", truth)
+  # print("[define_model@define_model.py] prediction: ", prediction)
+  # print("[define_model@define_model.py] truth: ", truth)
         # should_summarize,
         # lambda: define_summaries.define_summaries(graph, config),
         # lambda: (tf.constant(''), tf.zeros((0,), tf.float32), tf.zeros((8,), tf.float32)),
         # name='summaries')
-  print("1")
-  with tf.device('/cpu:0'):
+  # print("1")
+  with tf.deviprce('/cpu:0'):
     summaries = tf.summary.merge(
         [summaries, train_summary] + collect_summaries)
     zs_entropy = (tf.reduce_sum(tools.mask(

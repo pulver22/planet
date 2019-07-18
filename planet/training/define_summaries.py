@@ -112,7 +112,7 @@ def define_summaries(graph, config):
       # print("truth_arr: ", type(truth_arr), truth_arr)
       # np.save(file='/home/pulver/Desktop/tmp_planet/supervised_data/prediction', arr=prediction_arr)
       # np.save(file='/home/pulver/Desktop/tmp_planet/supervised_data/truth', arr=truth_arr)
-  print("Pred: ", prediction)
+  # print("Pred: ", prediction)
   with tf.variable_scope('simulation'):
     sim_returns = []
     for name, params in config.sim_summaries.items():
@@ -130,13 +130,12 @@ def define_summaries(graph, config):
   score = tf.reduce_mean(sim_returns)[None]
 
   # print("==> Graph.data: ", graph.data)
-  print("==> state_dists['image']: ", state_dists['image'].mode()[0])
+  # print("==> state_dists['image']: ", state_dists['image'].mode()[0])
   graph_slim = {}
   graph_slim['action'] = graph.data['action'][0]
   graph_slim['image'] = graph.data['image'][0]
   graph_slim['position'] = graph.data['position'][0]
   graph_slim['velocity'] = graph.data['velocity'][0]
-  graph_slim['return'] = graph.data['return'][0]
   graph_slim['reward'] = graph.data['reward'][0]
   graph_slim['predicted_image'] = state_dists['image'].mode()[0]
 
