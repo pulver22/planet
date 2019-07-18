@@ -182,13 +182,10 @@ def objective_summaries(objectives, name='objectives'):
 
 def prediction_summaries(dists, data, state, name='state'):
   summaries = []
-  pred = tf.Variable(initial_value=np.zeros(shape=(8,50)), trainable=True)
-  # pred = tf.placeholder(shape=(8,50), name='pred', dtype=tf.float32)
   with tf.variable_scope(name):
     # Predictions.
     log_probs = {}
     predictions = []
-    # print("Dists: ", dists.items())
     for key, dist in dists.items():
       # print("Keycall: ", key)
       if key in ('image',):
@@ -200,13 +197,6 @@ def prediction_summaries(dists, data, state, name='state'):
       prediction = dist.mode()[0]
       truth = data[key][0]
       plot_name = key
-      print("prediction: ", prediction)
-      # print("Truth: ", type(truth), truth.shape)
-      # Save on disk
-      # print("tmp: ", tmp)
-      # with sess.as_default():
-      # np.save(file='/home/pulver/Desktop/tmp_planet/supervised_data/truth', arr=tmp)
-        # np.save(file='/home/pulver/Desktop/tmp_planet/supervised_data/prediction', arr=prediction.eval(sess))
       # Ensure that there is a feature dimension.
       if prediction.shape.ndims == 1:
         prediction = prediction[:, None]
@@ -218,11 +208,6 @@ def prediction_summaries(dists, data, state, name='state'):
         predictions.append(prediction)
 
       prediction = tf.unstack(tf.transpose(prediction, (1, 0)))
-      # print("prediction: ", type(prediction), len(prediction))
-      # print("prediction: ", type(prediction[0]), prediction[0].shape)
-      # if len(prediction) == 8:
-      #   print("found match")
-      #   assign_op = (truth)
       truth = tf.unstack(tf.transpose(truth, (1, 0)))
       lines = list(zip(prediction, truth))
       titles = ['{} {}'.format(key.title(), i) for i in range(len(lines))]

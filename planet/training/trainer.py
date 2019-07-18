@@ -232,7 +232,7 @@ class Trainer(object):
             phase_step, phase.batch_size, phase.log_every)
         phase.feed[self._report] = self._is_every_steps(
             phase_step, phase.batch_size, phase.report_every)
-        #summary, \
+        summary, \
         mean_score, global_step, prediction, truth_pos, \
           truth_vel, truth_rew, truth_act, truth_img, pred_image = sess.run(phase.op, phase.feed)
         # print("[iterate@trainer.py] prediction: ", prediction)
@@ -244,7 +244,7 @@ class Trainer(object):
         for i in dirs_list:
           if not os.path.exists(outdir_source + i):
             os.makedirs(outdir_source + i)
-        # print("Counter: ", counter)
+        print("Prediction: ", prediction.shape)
         if counter % 100 == 0:
           np.save(file=outdir_source + dirs_list[0] + str(counter), arr=prediction[:, 0:9])  # pred_vel
           np.save(file=outdir_source + dirs_list[1] + str(counter), arr=prediction[:, 9:-1])  # pred_pos
@@ -269,12 +269,12 @@ class Trainer(object):
             phase_step, phase.batch_size, phase.report_every):
           tf.logging.info('Score {}.'.format(mean_score))
           yield mean_score
-        # if summary and phase.writer:
-        #   # We want smaller phases to catch up at the beginnig of each epoch so
-        #   # that their graphs are aligned.
-        #   longest_phase = max(phase_.steps for phase_ in self._phases)
-        #   summary_step = epoch * longest_phase + steps_in
-        #   phase.writer.add_summary(summary, summary_step)
+        if summary and phase.writer:
+          # We want smaller phases to catch up at the beginnig of each epoch so
+          # that their graphs are aligned.
+          longest_phase = max(phase_.steps for phase_ in self._phases)
+          summary_step = epoch * longest_phase + steps_in
+          phase.writer.add_summary(summary, summary_step)
         if self._is_every_steps(
             phase_step, phase.batch_size, phase.restore_every):
           self._initialize_variables(
@@ -349,7 +349,7 @@ class Trainer(object):
                                     truth['position'], truth['velocity'], truth['reward'],
                                     truth['action'], truth['image'], truth['predicted_image']]):
         return (
-            #tf.identity(summary),
+            tf.identity(summary),
             tf.identity(mean_score),
             tf.identity(next_step),
             tf.identity(prediction),
