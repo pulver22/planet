@@ -233,22 +233,27 @@ class Trainer(object):
         phase.feed[self._report] = self._is_every_steps(
             phase_step, phase.batch_size, phase.report_every)
         summary, mean_score, global_step, prediction, truth_pos, \
-          truth_vel, truth_rew, truth_act, truth_img = sess.run(phase.op, phase.feed)
+          truth_vel, truth_rew, truth_act, truth_img, pred_image = sess.run(phase.op, phase.feed)
         # print("[iterate@trainer.py] prediction: ", prediction)
         # print("[iterate@trainer.py] truth_pos: ", truth_pos)
         # print("[iterate@trainer.py] truth_vel: ", truth_vel)
-        outdir= "/home/pulver/Desktop/planet_data/"
-        if not os.path.exists(outdir):
-          os.makedirs(outdir)
-        print("Counter: ", counter)
-        np.save(file=outdir + "pred_vel-" + str(counter), arr=prediction[:, 0:9])
-        np.save(file=outdir + "pred_pos-" + str(counter), arr=prediction[:, 9:-1])
-        np.save(file=outdir + "pred_rew-" + str(counter), arr=prediction[:, -1])
-        np.save(file=outdir + "truth_pos-" + str(counter), arr=truth_pos)
-        np.save(file=outdir + "truth_vel-" + str(counter), arr=truth_vel)
-        np.save(file=outdir + "truth_act-" + str(counter), arr=truth_act)
-        np.save(file=outdir + "truth_rew-" + str(counter), arr=truth_rew)
-        np.save(file=outdir + "truth_img-" + str(counter), arr=truth_img)
+        outdir_source = "/media/pulver/PulverHDD/planet_data/"
+        dirs_list = ["pred_vel/", "pred_pos/", "pred_rew/", "truth_pos/", "truth_vel/", "truth_act/", "truth_rew/",
+                     "truth_img/", "pred_img/"]
+        for i in dirs_list:
+          if not os.path.exists(outdir_source + i):
+            os.makedirs(outdir_source + i)
+        # print("Counter: ", counter)
+        if counter % 100 == 0:
+          np.save(file=outdir_source + dirs_list[0] + str(counter), arr=prediction[:, 0:9])  # pred_vel
+          np.save(file=outdir_source + dirs_list[1] + str(counter), arr=prediction[:, 9:-1])  # pred_pos
+          np.save(file=outdir_source + dirs_list[2] + str(counter), arr=prediction[:, -1])  # pred_rew
+          np.save(file=outdir_source + dirs_list[3] + str(counter), arr=truth_pos)  # truth_pos
+          np.save(file=outdir_source + dirs_list[4] + str(counter), arr=truth_vel)  # truth_vel
+          np.save(file=outdir_source + dirs_list[5] + str(counter), arr=truth_act)  # truth_act
+          np.save(file=outdir_source + dirs_list[6] + str(counter), arr=truth_rew)  # truth_rew
+          np.save(file=outdir_source + dirs_list[7] + str(counter), arr=truth_img)  # truth_img
+          np.save(file=outdir_source + dirs_list[8] + str(counter), arr=pred_image)  # truth_img
 
         counter = counter + 1
         # self._prediction = sess.run(prediction[0])
@@ -340,7 +345,7 @@ class Trainer(object):
         next_step = self._global_step.assign_add(batch_size)
       with tf.control_dependencies([summary, mean_score, next_step, prediction,
                                     truth['position'], truth['velocity'], truth['reward'],
-                                    truth['action'], truth['image']]):
+                                    truth['action'], truth['image'], truth['predicted_image']]):
         return (
             tf.identity(summary),
             tf.identity(mean_score),
@@ -350,7 +355,8 @@ class Trainer(object):
             tf.identity(truth['velocity']),
             tf.identity(truth['reward']),
             tf.identity(truth['action']),
-            tf.identity(truth['image']))
+            tf.identity(truth['image']),
+            tf.identity(truth['predicted_image']))
 
   def _create_session(self):
     """Create a TensorFlow session with sensible default parameters.
