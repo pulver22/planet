@@ -149,7 +149,7 @@ def define_model(data, trainer, config):
         # lambda: (tf.constant(''), tf.zeros((0,), tf.float32), tf.zeros((8,), tf.float32)),
         # name='summaries')
   # print("1")
-  with tf.deviprce('/cpu:0'):
+  with tf.device('/cpu:0'):
     summaries = tf.summary.merge(
         [summaries, train_summary] + collect_summaries)
     zs_entropy = (tf.reduce_sum(tools.mask(
